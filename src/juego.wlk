@@ -35,6 +35,7 @@ object juego {
 		
 	}
 	
+	//console.println("63")
 	method iniciarInterfaz(){
 		game.width(30)
 		game.height(20)
