@@ -1,15 +1,28 @@
 import wollok.game.*
 import food.*
-object snake {
+
+class Snake {
 	
 	var property position = game.center()
 	var direccion = "arriba"
+	
+	var siguienteParte = null
 	
 	method image() {
 		return "assets/body_snake_2.png"
 	} 
 	
+	method crecer() {
+		const snake = new Snake(position = self.position())
+		siguienteParte = snake
+		game.addVisual(snake)
+	}
+	
 	method moverse() {
+		if(siguienteParte != null) {
+			siguienteParte.position(self.position())
+		}
+		//Ver otra manera de implementar o reestructurar este codigo con polimorfismo
 		if(direccion == "arriba") {
 			self.moverseArriba()
 		} else if(direccion == "izquierda") {

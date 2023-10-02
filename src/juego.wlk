@@ -4,6 +4,8 @@ import food.*
 
 
 object juego {
+	
+	const snake = new Snake()
 	method iniciar(){		
 		
 		game.onTick(100, "Moverse solo", {
@@ -27,12 +29,12 @@ object juego {
 			}
 		
 		self.iniciarInterfaz()
-		game.onCollideDo(food, { quienColisiono => food.moverseAleatorio() })
-		
-		game.start()
-		
-		
-		
+			game.onCollideDo(food, {
+				quienColisiono => 
+					food.moverseAleatorio()
+					snake.crecer()
+			})		
+			game.start()
 	}
 	
 	//console.println("6")
