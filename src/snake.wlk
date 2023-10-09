@@ -1,10 +1,11 @@
 import wollok.game.*
 import food.*
+import direccion.*
 
 class Snake {
 	
 	var property position = game.center()
-	var direccion = "arriba"
+	var direccion = arriba
 	
 	var siguienteParte = null
 	
@@ -23,15 +24,10 @@ class Snake {
 			siguienteParte.position(self.position())
 		}
 		//Ver otra manera de implementar o reestructurar este codigo con polimorfismo
-		if(direccion == "arriba") {
-			self.moverseArriba()
-		} else if(direccion == "izquierda") {
-			self.moverseIzquierda()			
-		}else if(direccion == "derecha"){
-			self.moverseDerecha()
-		}else {
-			self.moverseAbajo()
-		}
+		
+		direccion.moverse(self)
+		
+	
 	}
 	
 	method cambiarDireccion(nuevaDireccion) {
@@ -56,13 +52,17 @@ class Snake {
 		self.verificarColisionFoodYSnake()		
 	}
 	
+	
+	method verificarColisionPantalla(){
+		console.println("asd")
+	}
 	method verificarColisionFoodYSnake(){
 		
-		console.println("SnakeX= "+position.x())
+		/*console.println("SnakeX= "+position.x())
 		console.println("SnakeY= "+position.y())
 		console.println("FoodX= "+food.position().x())
 		console.println("FoodY= "+food.position().y())
-		
+		*/
 	}
 }
 
